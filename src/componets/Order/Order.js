@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 const Order = () => {
     const [orders, setOrder] = useState([])
     const { productID } = useParams();
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
 
     const { user } = useAuth()
     useEffect(() => {
@@ -20,6 +20,35 @@ const Order = () => {
 
 
     }, []);
+
+
+
+    const onSubmit = data => {
+        fetch("http://localhost:5000/order", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(order[0]),
+        })
+            .then((res) => res.json())
+            .then((result) => console.log(result));
+        console.log(data)
+    };
+
+
+
+
+
+    // Sending data
+
+    const handeleUser = () => {
+        // console.log(data);
+
+    }
+
+
+
+
+
     // Filtatring Producuts
     console.log(user)
 
@@ -35,7 +64,7 @@ const Order = () => {
             <div className="container">
 
 
-                <div class="row">
+                <div className="row">
                     <div className="col-lg-7 col-sm-12">
                         <div className="details my-5  justify-content-center">
 
@@ -71,10 +100,11 @@ const Order = () => {
                                         <input placeholder="Enter Your Address" style={{ width: "50%" }} type="text" {...register("phone", { required: true })} />
                                         <br />
                                         <br />
-                                        <button  style={{ width: "50%" }} className="btn-info">
+                                        <button style={{ width: "50%" }} className="btn-info">
                                             <input className="btn-info" type="submit" />
 
                                         </button>
+                                        <button onClick={handeleUser}>H</button>
                                     </form>
                                 </div>
                             </div>
