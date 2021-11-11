@@ -29,6 +29,7 @@ const UserOrders = () => {
             .then((result) => {
                 if (result.deletedCount) {
                     setIsDelete(true);
+                    alert('Do You want to Delet it')
                 } else {
                     setIsDelete(false);
                 }

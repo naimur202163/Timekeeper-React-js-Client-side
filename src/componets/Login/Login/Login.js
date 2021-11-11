@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
+import Header from '../../Shared/Header/Header';
 import useAuth from './../../../hooks/useAuth';
 
 
@@ -24,29 +26,36 @@ const Login = () => {
         e.preventDefault();
     }
     return (
-        <div>
+        <div >
+            <Header></Header>
+            <div className="text-muted text-center my-5"><h1>PLS  Login</h1></div>
             <Row>
                 <Col >
-                    <form onSubmit={handleLoginSubmit} >
+                    <div className=" d-flex justify-content-center">
+                        <form className="" onSubmit={handleLoginSubmit} >
 
-                        <input style={{ width: "40%" }}
-                            className="form-control"
-                            name="email"
-                            type="email"
-                            onChange={handleOnChange}
-                            placeholder="Enter Your email"
-                        />
-                        <input style={{ width: "40%" }}
-                            type="password"
-                            className="form-control"
-                            type="password"
-                            name="password"
-                            onChange={handleOnChange}
-                            placeholder="Enter Your PassWord"
-                        />
+                            <input style={{ width: "100%" }}
+                                className="form-control my-4"
+                                name="email"
+                                type="email"
+                                onChange={handleOnChange}
+                                placeholder="Enter Your email"
+                            />
+                            <input style={{ width: "100%" }}
+                                type="password"
+                                className="form-control my-4"
+                                type="password"
+                                name="password"
+                                onChange={handleOnChange}
+                                placeholder="Enter Your PassWord"
+                            />
 
-                        <Button type="submit" >Submit</Button>
-                    </form>
+                            <Button className="btn-info " type="submit" >Login</Button>
+                            <h4 className="text-muted my-4">Dont have Account pls <Link to="/register"> Resgister</Link></h4>
+                        </form>
+
+                    </div>
+
                 </Col>
             </Row>
 

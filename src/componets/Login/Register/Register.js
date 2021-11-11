@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import useAuth from './../../../hooks/useAuth';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import Header from '../../Shared/Header/Header';
 
 const Register = () => {
 
@@ -27,9 +29,12 @@ const Register = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleLoginSubmit} >
-                {/* <input style={{ width: "40%" }}
+        <div >
+            <Header></Header>
+            <div><h1 className="text-muted text-center my-5" >Please <sapn className="text-info">Register</sapn> </h1></div>
+            <div className=" d-flex justify-content-center">
+                <form onSubmit={handleLoginSubmit} >
+                    {/* <input style={{ width: "40%" }}
                     id="inputPassword6"
                     className="form-control"
                     name="name"
@@ -37,32 +42,40 @@ const Register = () => {
                     onBlur={handleOnBlur}
                     placeholder="Enter Your Name"
                 /> */}
-                <input style={{ width: "40%" }}
-                    className="form-control"
-                    name="email"
-                    type="email"
-                    onBlur={handleOnBlur}
-                    placeholder="Enter Your email"
-                />
-                <input style={{ width: "40%" }}
-                    type="password"
-                    className="form-control"
-                    type="password"
-                    name="password"
-                    onBlur={handleOnBlur}
-                    placeholder="Enter Your PassWord"
-                />
-                <input style={{ width: "40%" }}
-                    type="password"
-                    className="form-control"
-                    type="password"
-                    name="password2"
-                    onBlur={handleOnBlur}
-                    placeholder="Re-typePassword"
-                />
-                <Button type="submit" >Submit</Button>
-            </form>
-            <Button >Google</Button>
+                    <input style={{ width: "100%" }}
+                        className="form-control my-3"
+                        name="email"
+                        type="email"
+                        onBlur={handleOnBlur}
+                        placeholder="Enter Your email"
+                    />
+                    <input style={{ width: "100%" }}
+                        type="password"
+                        className="form-control my-3"
+                        type="password"
+                        name="password"
+                        onBlur={handleOnBlur}
+                        placeholder="Enter Your PassWord"
+                    />
+                    <input style={{ width: "100%" }}
+                        type="password"
+                        className="form-control my-3"
+                        type="password"
+                        name="password2"
+                        onBlur={handleOnBlur}
+                        placeholder="Re-typePassword"
+                    />
+                    <Button className="btn-info" type="submit" >Register</Button>
+
+                    <Link to="/login">
+                        <Button className="btn-success ms-2" >Already Have Account</Button>
+
+
+                    </Link>
+                </form>
+
+            </div>
+
         </div>
     );
 };
