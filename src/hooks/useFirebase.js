@@ -9,7 +9,6 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
-
     const auth = getAuth();
 
     const registerUser = (email, password) => {
@@ -69,6 +68,7 @@ const useFirebase = () => {
         registerUser,
         loginUser,
         logout,
+
     }
 }
 

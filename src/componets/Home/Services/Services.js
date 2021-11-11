@@ -23,26 +23,30 @@ const Services = () => {
             <hr />
             <div className="row">
                 <div className="col-lg-4 col-sm-12">
-                    <div className="d-flex">
-                        <img src="https://cdn.shopify.com/s/files/1/0039/3740/2989/files/333_small.png?v=1559367618" alt="" />
-                        <h3>Free Shipping</h3>
-                        <p>Free shipping on order</p>
+                    <div className="d-flex m-2">
+                        <img className="img-fluid" src="https://cdn.shopify.com/s/files/1/0039/3740/2989/files/333_small.png?v=1559367618" alt="" />
+
+                        <div>
+                            <h3 className="m-2 p-1" >Free Shipping</h3>
+                            <p className="m-2 p-1">Free shipping on order</p>
+                        </div>
+
                     </div>
 
                 </div>
                 <div className="col-lg-4 col-sm-12">
                     <div className="d-flex">
                         <img src="https://cdn.shopify.com/s/files/1/0039/3740/2989/files/111_small.png?v=1559367608" alt="" />
-                        <h3>Free Shipping</h3>
-                        <p>Free shipping on order</p>
+                        <h3 className="m-2 p-1">Free Shipping</h3>
+                        <p className="m-2 p-1">Free shipping on order</p>
                     </div>
 
                 </div>
                 <div className="col-lg-4 col-sm-12">
                     <div className="d-flex">
                         <img src="https://cdn.shopify.com/s/files/1/0039/3740/2989/files/222_small.png?v=1559367648" alt="" />
-                        <h3>Payment Secure</h3>
-                        <p>Free shipping on order</p>
+                        <h3 className="m-2 p-1">Payment Secure</h3>
+                        <p className="m-2 p-1">Free shipping on order</p>
                     </div>
 
 

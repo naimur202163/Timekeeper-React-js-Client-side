@@ -8,8 +8,6 @@ const Order = () => {
     const [orders, setOrder] = useState([])
     const { productID } = useParams();
     const { register, handleSubmit, formState: { errors } } = useForm();
-
-
     const { user } = useAuth()
     useEffect(() => {
         const url = `http://localhost:5000/products`;
@@ -24,14 +22,29 @@ const Order = () => {
 
 
     const onSubmit = data => {
-        fetch("http://localhost:5000/order", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(order[0]),
-        })
-            .then((res) => res.json())
-            .then((result) => console.log(result));
-        console.log(data)
+        const itme1 = order;
+        const item2 = data
+        const itmes = { ...itme1, ...item2 }
+        console.log(itmes)
+        // console.log(itme1, item2)
+        // console.log(order[0], data)
+        // console.log({ data, itmes })
+
+        // fetch("http://localhost:5000/order", {
+        //     method: "POST",
+        //     headers: { "content-type": "application/json" },
+        //     body: JSON.stringify(itmes),
+        // })
+        //     .then((res) => res.json())
+        //     .then((result) => console.log(result));
+        // console.log(data)
+
+
+
+
+
+
+
     };
 
 
@@ -40,20 +53,27 @@ const Order = () => {
 
     // Sending data
 
-    const handeleUser = () => {
-        // console.log(data);
+    // const handeleUser = () => {
+    //     // console.log(data);
+    //     fetch("http://localhost:5000/order", {
+    //         method: "POST",
+    //         headers: { "content-type": "application/json" },
+    //         body: JSON.stringify(order[0]),
+    //     })
+    //         .then((res) => res.json())
+    //         .then((result) => console.log(result));
+    //     console.log(data)
 
-    }
+    // }
 
 
 
 
 
     // Filtatring Producuts
-    console.log(user)
+    // console.log(user)
 
-    const order = orders?.filter(items => items._id == productID);
-
+    const order = orders?.find(items => items._id == productID);
 
 
 
@@ -68,13 +88,13 @@ const Order = () => {
                     <div className="col-lg-7 col-sm-12">
                         <div className="details my-5  justify-content-center">
 
-                            <h2 className="text-secondary">{order[0]?.name}</h2>
-                            <h4 className="text-secondary">{order[0]?.subname}</h4>
+                            <h2 className="text-secondary">{order?.name}</h2>
+                            <h4 className="text-secondary">{order?.subname}</h4>
                             <hr />
-                            <h3><img className="img-fluid img-rounded" src={order[0]?.img} /></h3>
-                            <h3 className="text-muted">{order[0]?.type}</h3>
-                            <h4 className="text-muted">Price : {order[0]?.price}$</h4>
-                            <p>{order[0]?.discription}</p>
+                            <h3><img className="img-fluid img-rounded" src={order?.img} /></h3>
+                            <h3 className="text-muted">{order?.type}</h3>
+                            <h4 className="text-muted">Price : {order?.price}$</h4>
+                            <p>{order?.discription}</p>
                         </div>
                     </div>
                     <div className="col-lg-5 col-sm-12 my-5" >
@@ -94,17 +114,20 @@ const Order = () => {
                                         <br />
                                         {errors.exampleRequired && <span>This field is required</span>}
                                         <br />
-                                        <input placeholder="Enter Your Phone Number" style={{ width: "50%" }} type="number" {...register("phone", { required: true })} />
+                                        <input type="number" placeholder="Enter Your Phone Number" style={{ width: "50%" }} type="number" {...register("phone", { required: true })} />
                                         <br />
                                         <br />
-                                        <input placeholder="Enter Your Address" style={{ width: "50%" }} type="text" {...register("phone", { required: true })} />
+                                        <input type="text" placeholder="Enter Your Address" style={{ width: "50%" }} type="text" {...register("phone", { required: true })} />
+                                        <br />
+                                        <br />
+                                        <input type="text" style={{ width: "50%" }} type="text" {...register("phone", { required: true })} />
                                         <br />
                                         <br />
                                         <button style={{ width: "50%" }} className="btn-info">
                                             <input className="btn-info" type="submit" />
 
                                         </button>
-                                        <button onClick={handeleUser}>H</button>
+                                        {/* <button onClick={handeleUser}>H</button> */}
                                     </form>
                                 </div>
                             </div>
@@ -117,7 +140,7 @@ const Order = () => {
 
 
             </div >
-        </div>
+        </div >
     );
 };
 
