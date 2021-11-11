@@ -26,24 +26,14 @@ const Order = () => {
         const item2 = data
         const itmes = { ...itme1, ...item2 }
         console.log(itmes)
-        // console.log(itme1, item2)
-        // console.log(order[0], data)
-        // console.log({ data, itmes })
 
-        // fetch("http://localhost:5000/order", {
-        //     method: "POST",
-        //     headers: { "content-type": "application/json" },
-        //     body: JSON.stringify(itmes),
-        // })
-        //     .then((res) => res.json())
-        //     .then((result) => console.log(result));
-        // console.log(data)
-
-
-
-
-
-
+        fetch("http://localhost:5000/order", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(itmes),
+        })
+            .then((res) => res.json())
+            .then((result) => console.log(result));
 
     };
 
@@ -120,9 +110,7 @@ const Order = () => {
                                         <input type="text" placeholder="Enter Your Address" style={{ width: "50%" }} type="text" {...register("phone", { required: true })} />
                                         <br />
                                         <br />
-                                        <input type="text" style={{ width: "50%" }} type="text" {...register("phone", { required: true })} />
-                                        <br />
-                                        <br />
+
                                         <button style={{ width: "50%" }} className="btn-info">
                                             <input className="btn-info" type="submit" />
 

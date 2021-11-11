@@ -12,6 +12,7 @@ import Register from './componets/Login/Register/Register';
 import AuthProvider from './context/AuthProvider/AuthProvider';
 import PrivateRoute from './componets/Login/PrivateRoute/PrivateRoute';
 import OurService from './componets/OurServices/OurService';
+import UserOrders from './componets/UserOrders/UserOrders';
 
 function App() {
   return (
@@ -28,7 +29,9 @@ function App() {
             <Route path="/ourservices">
               <OurService></OurService>
             </Route>
-
+            <Route path="/userorders">
+              <UserOrders></UserOrders>
+            </Route>
             <PrivateRoute path="/order/:productID">
               <Order></Order>
             </PrivateRoute>

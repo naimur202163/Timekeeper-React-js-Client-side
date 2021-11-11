@@ -36,7 +36,9 @@ const OurService = () => {
                                             <p className="card-text my-1">{order.discription}</p>
                                             <p className="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                             <p className="card-text"><small class="text-muted"> {order.price}$</small></p>
-                                            <button className="btn btn-info">Bye Now</button>
+                                            <Link to={`/order/${order._id}`}>
+                                                <Button onClick variant="btn btn-info">Bye Now</Button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

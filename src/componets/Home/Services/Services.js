@@ -61,24 +61,26 @@ const Services = () => {
                 <Container >
                     <Row >
                         {
-                            products.map(product => <Col gap={1} className="my-3" sm={12} lg={4}>
-                                <Card style={{ width: '16rem' }}>
-                                    <Card.Img style={{ width: "auto", height: "15rem" }} variant="top" src={product.img} />
-                                    <Card.Body>
-                                        <Card.Title>{product.name}</Card.Title>
-                                        <Card.Text>
-                                            {product.subname}
-                                        </Card.Text>
-                                        <Card.Text>
-                                            {product.price} $
-                                        </Card.Text>
-                                        <Link to={`/order/${product._id}`}>
-                                            <Button onClick variant="primary">Bye Now</Button>
-                                        </Link>
-                                    </Card.Body>
-                                </Card>
+                            products?.map(product =>
+                                <div class="col-sm-12 col-lg-4 my-2 ">
+                                    <div class="card">
+                                        <div><img style={{ width: "100%" }} className="rounded mx-auto d-block mt-4" src={product.img} /></div>
+                                        <div class="card-body">
+                                            <h5 class="card-title text-muted">{product.name}</h5>
+                                            <h4 class="card-title text-muted">{product.price}$</h4>
 
-                            </Col>)
+                                            <p class="card-text">{product.discription.slice(20)}</p>
+                                            {/* <Link to={`/orderdetails/${product._id}`}>
+                                            <button className="btn btn-success m-2">update</button>
+                                        </Link> */}
+                                            <Link to={`/order/${product._id}`}>
+                                                <button className="btn btn-success m-2">Order Now</button>
+                                            </Link>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            )
                         }
                     </Row>
 
@@ -92,3 +94,5 @@ const Services = () => {
 };
 
 export default Services;
+
+
