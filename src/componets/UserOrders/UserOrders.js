@@ -7,7 +7,7 @@ const UserOrders = () => {
     const [isDelete, setIsDelete] = useState(null);
     const { user } = useAuth()
     useEffect(() => {
-        const url = `http://localhost:5000/orders?email=${user.email}`
+        const url = `https://pure-garden-91979.herokuapp.com/orders?email=${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(result => setProducts(result))
@@ -21,7 +21,7 @@ const UserOrders = () => {
     const handleDeleteProduct = (id) => {
         console.log(id);
 
-        fetch(`http://localhost:5000/deleteProduct/${id}`, {
+        fetch(`https://pure-garden-91979.herokuapp.com/deleteProduct/${id}`, {
             method: "DELETE",
             headers: { "Content-type": "application/json" },
         })

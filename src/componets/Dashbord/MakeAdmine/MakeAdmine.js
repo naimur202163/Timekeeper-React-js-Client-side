@@ -10,7 +10,7 @@ const MakeAdmine = () => {
         setEmail(e.target.value);
     }
     const handleAdminSubmit = e => {
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://pure-garden-91979.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

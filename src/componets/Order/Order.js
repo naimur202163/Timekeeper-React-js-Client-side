@@ -11,7 +11,7 @@ const Order = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user } = useAuth()
     useEffect(() => {
-        const url = `http://localhost:5000/products`;
+        const url = `https://pure-garden-91979.herokuapp.com/products`;
 
         fetch(url)
             .then(res => res.json())
@@ -28,7 +28,7 @@ const Order = () => {
         const itmes = { ...itme1, ...item2 }
         console.log(itmes)
 
-        fetch("http://localhost:5000/order", {
+        fetch("https://pure-garden-91979.herokuapp.com/order", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(itmes),
