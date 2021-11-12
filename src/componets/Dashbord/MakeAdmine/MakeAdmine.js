@@ -34,7 +34,7 @@ const MakeAdmine = () => {
     return (
 
         <div>
-            <h2>make An Admin</h2>
+            <h4 className="text-center text-muted"><span className="text-info">Make</span>  An  Admin</h4>
 
             <form onSubmit={handleAdminSubmit}>
                 <input style={{ width: "80%" }}

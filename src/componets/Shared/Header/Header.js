@@ -16,15 +16,18 @@ const Header = () => {
                         <Nav className="ms-auto">
                             <Nav.Link as={Link} to="/home">Home</Nav.Link>
                             <Nav.Link as={Link} to="/ourservices">Our Services</Nav.Link>
-                            <Nav.Link as={Link} to="/userorders">My-Orders</Nav.Link>
 
                             <Nav.Link as={Link} to="/login">About</Nav.Link>
                             <Nav.Link as={Link} to="/register">Regiser</Nav.Link>
                             <Nav.Link as={Link} to="/dashbord">Dashbord</Nav.Link>
+
                             {
                                 user?.email ?
+                                    <div>
+                                        <Nav.Link as={Link} to="/userorders">My-Orders</Nav.Link>
+                                        <Nav.Link onClick={logout} >LogOut</Nav.Link>
 
-                                    <Nav.Link onClick={logout} >LogOut</Nav.Link>
+                                    </div>
                                     :
                                     <Nav.Link as={Link} to="/login">Login</Nav.Link>
 
