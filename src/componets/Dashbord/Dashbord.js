@@ -10,6 +10,7 @@ import MakeAdmine from './MakeAdmine/MakeAdmine';
 import useAuth from '../../hooks/useAuth';
 import AddProducts from './AddProducts/AddProducts';
 import MangeProducts from './MangeProducts/MangeProducts';
+import Footer from '../Home/Footer/Footer';
 
 const Dashbord = () => {
     const { admin } = useAuth()
@@ -64,7 +65,7 @@ const Dashbord = () => {
             </Row>
 
 
-
+            <Footer></Footer>
         </div>
     );
 };

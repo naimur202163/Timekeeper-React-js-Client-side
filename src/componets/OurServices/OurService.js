@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Container, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Header from '../Shared/Header/Header';
 import Order from './../Order/Order';
+import Footer from './../Home/Footer/Footer';
 const OurService = () => {
     const [products, setProducts] = useState([])
 
@@ -18,9 +20,10 @@ const OurService = () => {
     }, [])
     return (
         <div>
-            <div><h1 className="text-muted text-center"> Our <span className="text-info"> Collection</span><br />
+            <Header></Header>
+            <div><h1 className="text-muted text-center my-5"> Our <span className="text-info"> Collection</span><br />
             </h1></div>
-            <div className="row">
+            <div className="row my-3">
                 {
                     products.map(order =>
                         <div className="col-lg-6 col-sm-12 my-2 p-2">
@@ -46,6 +49,7 @@ const OurService = () => {
                         </div>)
                 }
             </div>
+            <Footer></Footer>
         </div>
     );
 };

@@ -46,7 +46,7 @@ const AddProducts = () => {
                 <br />
                 {errors.exampleRequired && <span>This field is required</span>}
 
-                <input type="submit" />
+                <input className="btn-info rounded p-1" type="submit" />
             </form>
 
         </div>

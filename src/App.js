@@ -14,6 +14,7 @@ import PrivateRoute from './componets/Login/PrivateRoute/PrivateRoute';
 import OurService from './componets/OurServices/OurService';
 import UserOrders from './componets/UserOrders/UserOrders';
 import Dashbord from './componets/Dashbord/Dashbord';
+import About from './componets/About/About';
 
 function App() {
   return (
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route path="/register">
               <Register></Register>
+            </Route>
+            <Route path="/about">
+              <About></About>
             </Route>
 
           </Switch>

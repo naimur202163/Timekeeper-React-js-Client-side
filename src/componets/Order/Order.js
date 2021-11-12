@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { useForm } from "react-hook-form";
+import Header from '../Shared/Header/Header';
 
 const Order = () => {
     const [orders, setOrder] = useState([])
@@ -71,6 +72,7 @@ const Order = () => {
 
     return (
         <div>
+            <Header></Header>
             <div className="container">
 
 
