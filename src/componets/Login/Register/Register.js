@@ -50,6 +50,13 @@ const Register = () => {
                         placeholder="Enter Your email"
                     />
                     <input style={{ width: "100%" }}
+                        className="form-control my-3"
+                        name="name"
+                        type="name"
+                        onBlur={handleOnBlur}
+                        placeholder="Enter Your Name"
+                    />
+                    <input style={{ width: "100%" }}
                         type="password"
                         className="form-control my-3"
                         type="password"
