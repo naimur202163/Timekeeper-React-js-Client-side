@@ -7,8 +7,7 @@ https://hardcore-pare-4a9874.netlify.app/home
 # TimeKeeper
 we provide World best Service.We know what You need
 # Live site  Link:
-This project live site link [Madang](https://hardcore-pare-4a9874.netlify.app/home).
-Link:(https://hardcore-pare-4a9874.netlify.app/home)
+This project live site link [Madang](https://unruffled-hoover-560b6b.netlify.app/home).
 
 
 # what type of service we provide?
