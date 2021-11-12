@@ -13,6 +13,7 @@ import AuthProvider from './context/AuthProvider/AuthProvider';
 import PrivateRoute from './componets/Login/PrivateRoute/PrivateRoute';
 import OurService from './componets/OurServices/OurService';
 import UserOrders from './componets/UserOrders/UserOrders';
+import Dashbord from './componets/Dashbord/Dashbord';
 
 function App() {
   return (
@@ -29,14 +30,17 @@ function App() {
             <Route path="/ourservices">
               <OurService></OurService>
             </Route>
-            <Route path="/userorders">
+            <PrivateRoute path="/userorders">
               <UserOrders></UserOrders>
-            </Route>
+            </PrivateRoute>
             <PrivateRoute path="/order/:productID">
               <Order></Order>
             </PrivateRoute>
             <Route path="/login">
               <Login></Login>
+            </Route>
+            <Route path="/dashbord">
+              <Dashbord></Dashbord>
             </Route>
             <Route path="/register">
               <Register></Register>

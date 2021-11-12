@@ -20,6 +20,7 @@ const Header = () => {
 
                             <Nav.Link as={Link} to="/login">About</Nav.Link>
                             <Nav.Link as={Link} to="/register">Regiser</Nav.Link>
+                            <Nav.Link as={Link} to="/dashbord">Dashbord</Nav.Link>
                             {
                                 user?.email ?
 
