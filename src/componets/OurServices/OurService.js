@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Header from '../Shared/Header/Header';
 import Order from './../Order/Order';
 import Footer from './../Home/Footer/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const OurService = () => {
     const [products, setProducts] = useState([])
 
@@ -17,6 +19,10 @@ const OurService = () => {
             .then(resut => setProducts(resut))
 
 
+    }, []);
+    useEffect(() => {
+        AOS.init({ duration: 2000 })
+
     }, [])
     return (
         <div>
@@ -26,8 +32,8 @@ const OurService = () => {
             <div className="row my-3">
                 {
                     products.map(order =>
-                        <div className="col-lg-6 col-sm-12 my-2 p-2">
-                            <div className="card mb-3" style={{ "max - width": "540px" }}>
+                        <div data-aos="fade-down" className="col-lg-6 col-sm-12 my-2 p-2">
+                            <div data-aos="fade-down" className="card mb-3" style={{ "max - width": "540px" }}>
                                 <div className="row g-0">
                                     <div className="col-md-4">
                                         <img src={order.img} className="img-fluid rounded-start mt-3  ms-2" alt="..." />

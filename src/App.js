@@ -15,8 +15,13 @@ import OurService from './componets/OurServices/OurService';
 import UserOrders from './componets/UserOrders/UserOrders';
 import Dashbord from './componets/Dashbord/Dashbord';
 import About from './componets/About/About';
-
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 function App() {
+  useEffect(() => {
+    AOS.init({ duration: 2000 })
+  }, [])
   return (
     <div >
       <AuthProvider>

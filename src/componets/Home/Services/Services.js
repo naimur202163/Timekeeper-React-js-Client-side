@@ -26,37 +26,6 @@ const Services = () => {
             <h2 className="text-muted" >This is Our Services</h2>
             {/* Part-1 */}
             <hr />
-            <div className="row">
-                <div className="col-lg-4 col-sm-12 my-2">
-                    <div className="d-flex m-2">
-                        <img className="img-fluid" src="https://cdn.shopify.com/s/files/1/0039/3740/2989/files/333_small.png?v=1559367618" alt="" />
-
-                        <div>
-                            <h className="m-2 p-1" >Free Shipping</h>
-                            <p className="m-2 p-1">Free shipping on order</p>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div className="col-lg-4 col-sm-12 my-2">
-                    <div className="d-flex">
-                        <img src="https://cdn.shopify.com/s/files/1/0039/3740/2989/files/111_small.png?v=1559367608" alt="" />
-                        <h3 className="m-2 p-1">Free Shipping</h3>
-                        <p className="m-2 p-1">Free shipping on order</p>
-                    </div>
-
-                </div>
-                <div className="col-lg-4 col-sm-12 my-2">
-                    <div className="d-flex">
-                        <img src="https://cdn.shopify.com/s/files/1/0039/3740/2989/files/222_small.png?v=1559367648" alt="" />
-                        <h3 className="m-2 p-1">Payment Secure</h3>
-                        <p className="m-2 p-1">Free shipping on order</p>
-                    </div>
-
-
-                </div>
-            </div>
 
 
 
@@ -68,7 +37,7 @@ const Services = () => {
                         {
                             productss?.map(product =>
                                 <div class="col-sm-12 col-lg-4 my-2 ">
-                                    <div class="card">
+                                    <div data-aos="fade-up" class="card">
                                         <div><img style={{ width: "100%" }} className="rounded mx-auto d-block mt-4" src={product.img} /></div>
                                         <div class="card-body">
                                             <h5 class="card-title text-muted">{product.name}</h5>

@@ -7,7 +7,7 @@ const DownBanner = () => {
             <div>
                 <Row>
                     <Col className="my-3" lg={6} sm={12}>
-                        <div >
+                        <div data-aos="fade-up-right" >
                             <p className="text-muted  my-1">SPECIAL OFFER</p>
                             <h2 className="text-muted my-2">SUCCULENT GARDEN</h2>
                             <h1 className="text-muted my-3">GIFT BOXES</h1>
@@ -16,7 +16,7 @@ const DownBanner = () => {
                         </div>
                     </Col>
                     <Col className="my-3" lg={6} sm={12}>
-                        <img className="img-fluid" src="https://cdn.shopify.com/s/files/1/0039/3740/2989/files/694x424_e23c122a-8d28-40ec-ba10-87e28f07c2ba.jpg?v=1559383318" alt="" />
+                        <img data-aos="fade-up-left" className="img-fluid" src="https://cdn.shopify.com/s/files/1/0039/3740/2989/files/694x424_e23c122a-8d28-40ec-ba10-87e28f07c2ba.jpg?v=1559383318" alt="" />
                     </Col>
                 </Row>
             </div>
