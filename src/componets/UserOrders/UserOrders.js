@@ -44,12 +44,12 @@ const UserOrders = () => {
 
         <div className="">
             <Header></Header>
-            <h3 className="text-center my-5 text-muted">My  <span className="text-info">Orders</span> </h3>
+            <h3 data-aos="zoom-out-right" className="text-center my-5 text-muted">My  <span className="text-info">Orders</span> </h3>
             <div className="row container">
                 {
                     products.map(product => <div className="col-lg-6">
                         <div class="card mb-3">
-                            <img src={product.img} style={{ height: "400px" }} class="card-img-top" alt="..." />
+                            <img data-aos="zoom-out-right" src={product.img} style={{ height: "400px" }} class="card-img-top" alt="..." />
                             <div class="card-body">
                                 <h5 class="card-title">{product.name}</h5>
                                 <p class="card-text">{product.discription}</p>

@@ -83,7 +83,7 @@ const Order = () => {
                             <h2 className="text-secondary">{order?.name}</h2>
                             <h4 className="text-secondary">{order?.subname}</h4>
                             <hr />
-                            <h3><img className="img-fluid img-rounded" src={order?.img} /></h3>
+                            <h3><img data-aos="zoom-out-right" className="img-fluid img-rounded" src={order?.img} /></h3>
                             <h3 className="text-muted">{order?.type}</h3>
                             <h4 className="text-muted">Price : {order?.price}$</h4>
                             <p>{order?.discription}</p>
@@ -91,7 +91,7 @@ const Order = () => {
                     </div>
                     <div className="col-lg-5 col-sm-12 my-5" >
                         <div className="my-5">
-                            <h2>Order Now</h2>
+                            <h2 data-aos="zoom-out-right">Order Now</h2>
                             <div className="mx-auto my-5">
                                 <div className="my-4">
                                     <h3>Customer:<span className="text-muted"> {user.email}</span></h3>
