@@ -1,57 +1,14 @@
-# Getting Started with Create React App
-https://hardcore-pare-4a9874.netlify.app/home
+# TIME ZONE WATCH SHOP ⌚ <h1>
 
+[Click here to visit the site](https://assignment-12-8d290.web.app/)
 
+### Project Overview
 
-
-# TimeKeeper
-we provide World best Service.We know what You need
-# Live site  Link:
-This project live site link [Madang](https://unruffled-hoover-560b6b.netlify.app/home).
-
-
-# what type of service we provide?
-we provide worlds best Watch delivary
-we deleivary our Products in time 
-
-
- # Why you Chose your Web site ?
-
-In Our web Site You can get World Best Services .we are Professional. They are Always Ready for Help You.
-
-#  What type Content in this Site ?
-We Offer Best Services .In Our site You Will get best Watches .we are Ready.We take the best care Of our Customer
-
-# Discrition
-in this you can bye items .i made the website with the help of react js .i have added mush featchers in this website,
-
- # What type programing lanuge used for  made th
-    1.HTML
-    2.CSS
-    3.React JS
-    4. ReactBootstrap
-    5.Firebase
-    6.Node js
-    7.express js,
-    8.React Hooks form
-# thanks for visting us
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# review-website-naimur202163
+- This is a website about online **WATCH SHOP**.
+- You can buy your favorite watch through our website.
+- You can place orders when you are logged in.
+- As a customer you can visit our dashboard while logged in. You can also browse multiple routes such as the My Orders page and the review page.
+- On the My Orders page, you can view your orders. You can also give your valuable feedback in the Review section.
+- If you would like to explore more, please feel free to log in as a Admin. (email:admin@admin.com)(Pass:123456)
+- Once logged in as an admin, you can add additional products, manage all orders, and you can also create a new admin.
+- Good Luck. 😁

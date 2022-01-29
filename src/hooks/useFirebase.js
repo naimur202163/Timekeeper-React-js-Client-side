@@ -1,128 +1,160 @@
-import { useState, useEffect } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile, getIdToken, signOut } from "firebase/auth";
-import inititalizeAtuthintication from './../componets/Login/Firebase/Firese.initia';
+import { useState } from "react";
+import { useEffect } from "react";
 
+import initializeAuthentication from "../Firebase/firebase.init";
+import {
+  getAuth,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  TwitterAuthProvider,
+  signOut,
+} from "firebase/auth";
+import popupSuccess from "../popup/popupSuccess";
+import popupError from "../popup/popupError";
+import axios from "axios";
 
-// initialize firebase app
-inititalizeAtuthintication()
+initializeAuthentication();
+
 const useFirebase = () => {
-    const [user, setUser] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-    const [authError, setAuthError] = useState('');
-    const [admin, setAdmin] = useState(false);
-    const [token, setToken] = useState('');
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [admin, setAdmin] = useState(false);
 
-    const auth = getAuth();
-    const googleProvider = new GoogleAuthProvider();
+  const auth = getAuth();
 
-    const registerUser = (email, password, name, history) => {
-        setIsLoading(true);
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                setAuthError('');
-                const newUser = { email, displayName: name };
-                setUser(newUser);
-                // save user to the database
-                saveUser(email, name, 'POST');
-                // send name to firebase after creation
-                updateProfile(auth.currentUser, {
-                    displayName: name
-                }).then(() => {
-                }).catch((error) => {
-                });
-                history.replace('/');
-            })
-            .catch((error) => {
-                setAuthError(error.message);
-                console.log(error);
-            })
-            .finally(() => setIsLoading(false));
-    }
+  /* -------------------------------------------------------------------------- */
+  /*                                  PROVIDERS                                 */
+  /* -------------------------------------------------------------------------- */
+  const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
+  const twitterProvider = new TwitterAuthProvider();
 
-    const loginUser = (email, password, location, history) => {
-        setIsLoading(true);
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const destination = location?.state?.from || '/';
-                history.replace(destination);
-                setAuthError('');
-            })
-            .catch((error) => {
-                setAuthError(error.message);
-            })
-            .finally(() => setIsLoading(false));
-    }
+  /* -------------------------------------------------------------------------- */
+  /*                              UPDATE USER INFO                              */
+  /* -------------------------------------------------------------------------- */
+  const updateUserInfo = (name) => {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+    })
+      .then(() => {})
+      .catch((err) => {
+        popupError(err.message);
+      });
+  };
 
-    const signInWithGoogle = (location, history) => {
-        setIsLoading(true);
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                const user = result.user;
-                saveUser(user.email, user.displayName, 'PUT');
-                setAuthError('');
-                const destination = location?.state?.from || '/';
-                history.replace(destination);
-            }).catch((error) => {
-                setAuthError(error.message);
-            }).finally(() => setIsLoading(false));
-    }
+  /* -------------------------------------------------------------------------- */
+  /*                             CREATE NEW ACCOUNT                             */
+  /* -------------------------------------------------------------------------- */
+  const createNewAccount = (email, password, name) => {
+    setLoading(true);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        updateUserInfo(name);
+        setUser(result.user);
+        // save user to the database
+        saveUser(email, name, "POST");
+        window.location.pathname = "/form/signin";
+        logOut(false);
+        popupSuccess("new");
+      })
+      .catch((err) => {
+        popupError(err.message);
+      });
 
-    // observer user state
-    useEffect(() => {
-        const unsubscribed = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user);
-                getIdToken(user)
-                    .then(idToken => {
-                        setToken(idToken);
-                    })
-            } else {
-                setUser({})
-            }
-            setIsLoading(false);
-        });
-        return () => unsubscribed;
-    }, [])
+    setLoading(false);
+  };
 
-    useEffect(() => {
-        fetch(`https://pure-garden-91979.herokuapp.com/users/${user.email}`)
-            .then(res => res.json())
-            .then(data => setAdmin(data.admin))
-    }, [user.email])
+  /* -------------------------------------------------------------------------- */
+  /*                        SIGN IN WITH EMAIL & PASSWORD                       */
+  /* -------------------------------------------------------------------------- */
+  const signInWithEmail = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  /* -------------------------------------------------------------------------- */
+  /*                         SIGN IN WITH SOCIAL ACCOUNT                        */
+  /* -------------------------------------------------------------------------- */
+  const signInWithSocial = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
 
-    const logout = () => {
-        setIsLoading(true);
-        signOut(auth).then(() => {
-            // Sign-out successful.
-        }).catch((error) => {
-            // An error happened.
-        })
-            .finally(() => setIsLoading(false));
-    }
+  /* -------------------------------------------------------------------------- */
+  /*                                 USER LOGOUT                                */
+  /* -------------------------------------------------------------------------- */
+  const logOut = (isfalse) => {
+    signOut(auth)
+      .then(() => {
+        popupSuccess("logout", isfalse);
+      })
+      .catch((err) => {
+        popupError(err.message);
+      });
+  };
 
-    const saveUser = (email, displayName, method) => {
-        const user = { email, displayName };
-        fetch('https://pure-garden-91979.herokuapp.com/users', {
-            method: method,
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-            .then()
-    }
+  /* -------------------------------------------------------------------------- */
+  /*                               ON AUTH CHANGE                               */
+  /* -------------------------------------------------------------------------- */
+  useEffect(() => {
+    const unsubscribed = onAuthStateChanged(
+      auth,
+      (user) => {
+        setLoading(true);
+        if (user) {
+          setUser(user);
+        } else {
+          setUser(null);
+        }
 
-    return {
-        user,
-        admin,
-        token,
-        isLoading,
-        authError,
-        registerUser,
-        loginUser,
-        signInWithGoogle,
-        logout,
-    }
-}
+        setLoading(false);
+      },
+      [auth]
+    );
+
+    return () => unsubscribed;
+  }, [auth]);
+
+  /* -------------------------------------------------------------------------- */
+  /*                             ADD NEW USER TO DB                             */
+  /* -------------------------------------------------------------------------- */
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch("https://young-journey-72414.herokuapp.com/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
+  };
+
+  /* -------------------------------------------------------------------------- */
+  /*                               ADMIN PRESENCE                               */
+  /* -------------------------------------------------------------------------- */
+  useEffect(() => {
+    axios
+      .get(`https://young-journey-72414.herokuapp.com/users/${user?.email}`)
+      .then((data) => setAdmin(data.data.admin));
+  }, [user?.email]);
+
+  return {
+    user,
+    admin,
+    saveUser,
+    setUser,
+    loading,
+    setLoading,
+    createNewAccount,
+    signInWithEmail,
+    signInWithSocial,
+    facebookProvider,
+    twitterProvider,
+    googleProvider,
+    logOut,
+  };
+};
 
 export default useFirebase;
